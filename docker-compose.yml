@@ -1,0 +1,43 @@
+version: '3'
+services:
+  web:
+    image: hitalos/laravel:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www
+    links:
+      - database
+    environment:
+      DB_HOST: database
+      DB_DATABASE: itdivision
+      DB_USERNAME: itdivision
+      DB_PASSWORD: p455w0rd
+      DB_CONNECTION: mysql
+    # If you don't want to use default 'artisan serve' command, edit and uncomment the line below.
+    # command: php -S 0.0.0.0:80 echo "Hello World!"
+  database:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      # with mysql
+      MYSQL_DATABASE: itdivision
+      MYSQL_USER: itdivision
+      MYSQL_PASSWORD: p455w0rd
+      MYSQL_ROOT_PASSWORD: ispassword
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+    - database
+    links:
+    - database
+    ports:
+    - 9191:80
+    environment:
+      MYSQL_DATABASE: itdivision
+      MYSQL_USER: itdivision
+      MYSQL_PASSWORD: p455w0rd
+      PMA_HOST: database
