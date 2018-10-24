@@ -15,6 +15,10 @@ class Service extends Model
     ];
 
     public function users() {
-        $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User');
+    }
+
+    public function division() {
+        return $this->belongsTo('App\Model\Division');
     }
 }

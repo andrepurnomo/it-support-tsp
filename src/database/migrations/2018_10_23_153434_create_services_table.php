@@ -17,12 +17,15 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('owner');
+            $table->unsignedInteger('division_id');
             $table->text('description')->nullable();
             $table->string('state')->default('wait');
             $table->dateTime('wait_at')->nullable();
             $table->dateTime('process_at')->nullable();
             $table->dateTime('done_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('division_id')->references('id')->on('divisions');
         });
     }
 
