@@ -104,10 +104,15 @@ class HomeController extends Controller
     {
         //
         $service = Service::findOrFail($id);
+        $service->state = 'process';
 
-        $service->users()->attach($request->input('user_ids'));
+        if ($service->save()) {
+            $service->users()->attach($request->input('user_ids'));
+            return redirect('/home')->with('status', 'Laporan berhasil ditugaskan');
+        } else {
+            return redirect('/home')->with('status', 'Terjadi Kesalahan!');
+        }
 
-        return redirect('/home')->with('status', 'Laporan berhasil ditugaskan');
     }
 
     /**

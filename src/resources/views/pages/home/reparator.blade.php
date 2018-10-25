@@ -22,7 +22,7 @@
                             <label>Reparator</label>
                             <select multiple name="user_ids" class="form-control" required>
                                 @foreach ($users as $user)
-                                    @if (!$service->users()->where('id', '!=', $user->id)->exists())
+                                    @if (!$service->users()->where('id', '=', $user->id)->exists())
                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                     @endif
                                 @endforeach

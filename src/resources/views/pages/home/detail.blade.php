@@ -20,7 +20,7 @@
                         @if (($service->users()->where('id', '=', Auth::user()->id)->exists() || Auth::user()->level != 'staff') && $service->state == 'process')
                             <a href="{{route('to_done', $service->id)}}" class="btn btn-success btn-block">Selesai</a>
                         @endif
-                        @if (Auth::user()->level != 'staff' && $service->state == 'wait')
+                        @if (Auth::user()->level != 'staff' && $service->state != 'done')
                             <a href="{{route('home.edit', $service->id)}}" class="btn btn-primary btn-block">Tugaskan Reparator</a>
                         @endif
                     @endauth
