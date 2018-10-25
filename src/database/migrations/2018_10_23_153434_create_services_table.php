@@ -23,6 +23,7 @@ class CreateServicesTable extends Migration
             $table->dateTime('wait_at')->nullable();
             $table->dateTime('process_at')->nullable();
             $table->dateTime('done_at')->nullable();
+            $table->ipAddress('ip_address')->nullable();
             $table->timestamps();
 
             $table->foreign('division_id')->references('id')->on('divisions');
