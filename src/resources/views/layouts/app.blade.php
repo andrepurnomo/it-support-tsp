@@ -41,14 +41,35 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('home.index') }}">List Perbaikan</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home.create') }}">Laporkan Kerusakan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Masuk</a>
+                            </li>
+                            <!-- <li class="nav-item">
                                 @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
-                            </li>
+                            </li> -->
                         @else
+                            @if (Auth::user()->level == 'staff')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('task') }}">Tugas Saya</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('report.index') }}">Laporan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users.index') }}">User</a>
+                                </li>
+                            @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('server') }}">Status Server</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
