@@ -60,7 +60,7 @@ class HomeController extends Controller
             $status = 'Terjadi kesalahan, mohon hubungi administrator';
         }
         
-        return redirect('/')->with('status', $status);
+        return redirect('/home')->with('status', $status);
 
     }
 
@@ -105,6 +105,7 @@ class HomeController extends Controller
         //
         $service = Service::findOrFail($id);
         $service->state = 'process';
+        $service->process_at = date("Y-m-d H:i:s");;
 
         if ($service->save()) {
             $service->users()->attach($request->input('user_ids'));
