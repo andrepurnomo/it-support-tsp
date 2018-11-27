@@ -37,6 +37,10 @@
                             <textarea name="description" class="form-control" placeholder="Isikan deskripsi kerusakan di sini">
                             </textarea>
                         </div>
+                        <div class="form-group">
+                            <label>Keterangan</label>
+                                <input type="text" name="keterangan" class="form-control" placeholder="Urgent!">
+                            </div>
                         <input type="submit" value="Kirim" class="btn btn-block btn-success">
                     </form>
                 </div>

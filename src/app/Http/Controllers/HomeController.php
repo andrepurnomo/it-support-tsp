@@ -53,6 +53,7 @@ class HomeController extends Controller
         $service->description   = $request->input('description');
         $service->wait_at       = date("Y-m-d H:i:s");
         $service->ip_address    = $request->ip();
+        $service->keterangan    = $request->input('keterangan');
 
         if ($service->save()) {
             $status = 'Laporan Anda diterima dengan nomor '.$service->id;
