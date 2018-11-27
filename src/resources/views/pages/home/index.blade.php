@@ -49,6 +49,7 @@
                                     <td>{{$service->owner}}</td>
                                     <td>{{$service->division->name}}</td>
                                     <td>{{$service->state}}</td>
+                                    <td>{{$service->keterangan}}</td>
                                     <td><a href="{{route('home.show', $service->id)}}" class="btn btn-dark btn-sm">Detail</a></td>
                                 </tr>
                             @endforeach
