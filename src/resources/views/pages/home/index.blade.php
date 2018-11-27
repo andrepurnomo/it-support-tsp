@@ -38,6 +38,7 @@
                                 <th scope="col">Pemilik</th>
                                 <th scope="col">Divisi</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
